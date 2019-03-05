@@ -1,0 +1,79 @@
+knowledge base telefon
+ 
+ facets
+ 
+	single yes;
+	
+	rodzaj :
+		query "Czy telefon ma byc smartfonem?"
+		val oneof { "Tak", "Nie" };
+	
+	ulubiona_marka :
+		query "Masz ulubioną markę telefonu?"
+		val oneof { "Tak", "Nie" };
+		
+	marka :
+		query "Jaka jest twoja ulubiona marka telefonu?"
+		val oneof { "Samsung", "Apple", "Huawei", "Xiaomi", "LG", "Sony", "Leonovo", "HTC", "Nokia"};
+		
+	budzet :
+		query "Jaki masz budżet?"
+		val oneof { "Nieograniczony", "3000zł", "2000zł", "1000zł", "Mniej niż 1000zł" };
+
+	aparat :
+		query "Czy telefon ma posiadać dobry aparat?"
+		val oneof { "Tak", "Nie" };
+		
+	bateria :
+		query "Czy zależy Ci na dużej baterii?"
+		val oneof { "Tak", "Nie" };
+		
+	wydajnosc :
+		query "Czy zależy Ci na dużej wydajności?"
+		val oneof { "Tak", "Nie" };
+		
+	telefon:
+		ask no;
+	
+ end;
+ 
+ rules
+ 
+	01: telefon="Nokia 3310" if rodzaj="Nie";
+ 
+ end;
+ 
+ control
+	
+	char S1, S2, S3;
+	run;
+	
+	S1 := "Wybor telefonu";
+	S2 := "System doradczy w wyborze zakupu telefonu";
+	S3 := "Armand Pajor i Mateusz Chmielewski";
+	
+	vignette(S1,S2,S3);
+	setAppWinTitle("Wybor telefonu");
+	addSolution(yes);
+	
+	setWindowPos( solution, 100,100,600,200,0 );
+	int Odp;
+	Odp := 1;
+	
+	menu "Menu"
+		1. "Wybor telefonu"
+		2. "Wyjscie"
+	case 1:
+		while (Odp==1)
+			begin
+			goal("telefon=Telefon");
+			confirmBox( 0, 0, "Kontynuacja","Chcesz ponownie wybrać", Odp );
+			delNewFacts;
+		end;
+	case 2:
+		exit;
+	end;
+	
+	
+ end;
+end;
