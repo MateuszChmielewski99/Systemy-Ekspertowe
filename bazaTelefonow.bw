@@ -14,7 +14,7 @@ knowledge base telefon
 		
 	marka :
 		query "Jaka jest twoja ulubiona marka telefonu?"
-		val oneof { "Samsung", "Apple", "Huawei", "Xiaomi", "LG", "Sony", "Leonovo", "HTC", "Nokia"};
+		val oneof { "Samsung", "Apple", "Huawei", "Xiaomi", "Sony", "Nokia"};
 		
 	budzet :
 		query "Jaki masz budżet?"
@@ -40,7 +40,56 @@ knowledge base telefon
  rules
  
 	01: telefon="Nokia 3310" if rodzaj="Nie";
- 
+	02: telefon = "Samsung Galaxy S10" if ulubiona_marka="Nie",budzet="Nieograniczony" | ulubiona_marka="Tak", marka = "Samsung",budzet="Nieograniczony";
+	03: telefon = "iPhone Xs Max" if ulubiona_marka = "Tak",marka="Apple",budzet="Nieograniczony";
+	04:telefon = "Huawei P30" if ulubiona_marka = "Tak", marka="Huawei",budzet="Nieograniczony";
+	05:telefon = "Sony Xperia XZ2 Premium" if ulubiona_marka="Tak",marka="Sony",budzet="Nieograniczony";
+	06:telefon = "Xiaomi Mi9" if ulubiona_marka="Tak",marka="Xiaomi",budzet="Nieograniczony";
+	07:telefon = "Nokia 8 Sirocco" if ulubiona_marka="Tak",marka="Nokia",budzet="Nieograniczony";
+
+	08: telefon = "Samsung Galaxy S9" if ulubiona_marka = "Nie", budzet = "3000zł",aparat="Tak",bateria="Tak",wydajnosc="Tak" | 
+		      ulubiona_marka = "Tak",marka="Samsung",budzet = "3000zł",aparat="Tak",bateria="Tak",wydajnosc="Tak";
+	09:telefon = "Xiaomi Mi 8" if (ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Xiaomi"), budzet = "2000zł",aparat="Tak",bateria="Tak",wydajnosc="Tak"; 
+	10:telefon = "Huawei P9" if (ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Huawei"), budzet = "1000zł",aparat="Tak",bateria="Tak",wydajnosc="Tak";
+	11:telefon = "Xiaomi Mi 8 Lite" if (ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Xiaomi"), budzet = "Mniej niż 1000zł",aparat="Tak",bateria="Tak",wydajnosc="Tak";
+
+	12:telefon = "iPhone 8 Plus" if (ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Apple"), budzet = "3000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+	13:telefon = "Huawei P20" if (ulubiona_marka = "Nie"| ulubiona_marka="Tak",marka="Huawei"), budzet = "2000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+	14:telefon = "Huawei P Smart" if (ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Huawei"), budzet = "1000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+	15:telefon = "Samsung Galaxy S6" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Samsung"), budzet = "Mniej niż 1000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+
+	16:telefon = "iPhone X" if (ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Apple"), budzet = "3000zł",aparat="Nie",bateria="Nie",wydajnosc="Tak";
+	17:telefon = "Nokia 7.1" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Nokia"), budzet = "2000zł",aparat="Nie",bateria="Nie",wydajnosc="Tak";
+	18:telefon = "Xiaomi Mi A2" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Xiaomi"), budzet = "1000zł",aparat="Nie",bateria="Nie",wydajnosc="Tak";
+	19:telefon = "Nokia 6.1" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Nokia" ), budzet = "Mniej niż 1000zł",aparat="Nie",bateria="Nie",wydajnosc="Tak";
+
+	20:telefon = "Xiaomi Pocophone F1" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Xiaomi"), budzet = "3000zł",aparat="Nie",bateria="Nie",wydajnosc="Nie";
+	21:telefon = "Xiaomi Mi Max 3" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Xiaomi" ), budzet = "2000zł",aparat="Nie",bateria="Nie",wydajnosc="Nie";
+	22:telefon = "Huawei P20 Lite" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Huawei" ), budzet = "1000zł",aparat="Nie",bateria="Nie",wydajnosc="Nie";
+	23:telefon = "Samsung Galaxy A6" if ( ulubiona_marka = "Nie"| ulubiona_marka="Tak",marka="Samsung") , budzet = "Mniej niż 1000zł",aparat="Nie",bateria="Nie",wydajnosc="Nie";
+
+	24:telefon = "Huawei Mate 9 Porsche Design" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Huawei" ), budzet = "3000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+	25:telefon = "iPhone 7" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Apple" ), budzet = "2000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+	26:telefon = "Samsung Galaxy A7 2018" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Samsung"), budzet = "1000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+	27:telefon = "Huawei Mate 10 Lite" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Huawei") , budzet = "Mniej niż 1000zł",aparat="Nie",bateria="Tak",wydajnosc="Tak";
+
+	28:telefon = "Samsung Galaxy Note 9" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Samsung"), budzet = "3000zł",aparat="Tak",bateria="Nie",wydajnosc="Tak";
+	29:telefon = "Sony Xperia X10" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Sony") , budzet = "2000zł",aparat="Tak",bateria="Nie",wydajnosc="Tak";
+	30:telefon = "Huawei Nova 2 Plus" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Huawei"), budzet = "1000zł",aparat="Tak",bateria="Nie",wydajnosc="Tak";
+	31:telefon = "Nokia Lumia 930" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Nokia" ), budzet = "Mniej niż 1000zł",aparat="Tak",bateria="Nie",wydajnosc="Tak";
+
+	32:telefon = "Samsung Galaxy S10 E" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Samsung") , budzet = "3000zł",aparat="Tak",bateria="Tak",wydajnosc="Nie";
+	33:telefon = "Xiaomi Black Shark" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Xiaomi") , budzet = "2000zł",aparat="Tak",bateria="Tak",wydajnosc="Nie";
+	34:telefon = "iPhone 5s" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Apple") , budzet = "1000zł",aparat="Tak",bateria="Tak",wydajnosc="Nie";
+	35:telefon = "Sony Xperia Z2" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Sony"), budzet = "Mniej niż 1000zł",aparat="Tak",bateria="Tak",wydajnosc="Nie";
+
+	36:telefon = "iPhone XR" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Apple"), budzet = "3000zł",aparat="Tak",bateria="Nie",wydajnosc="Nie";
+	37:telefon = "Samsung Galaxy S6 Edge" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Samsung" ) , budzet = "2000zł",aparat="Tak",bateria="Nie",wydajnosc="Nie";
+	38:telefon = "Sony Xperia Z5 Premium" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Sony") , budzet = "1000zł",aparat="Tak",bateria="Nie",wydajnosc="Nie";
+	39:telefon = "Samsung Galaxy S4 Active" if ( ulubiona_marka = "Nie" | ulubiona_marka="Tak",marka="Samsung"), budzet = "Mniej niż 1000zł",aparat="Tak",bateria="Nie",wydajnosc="Nie";
+	
+		
+
  end;
  
  control
